@@ -1,0 +1,72 @@
+
+.block {
+  display: flex;
+  height: 100%;
+}
+
+.layout {
+  height: 100%;
+  position: relative;
+}
+
+.content {
+  flex: 1;
+  overflow: auto;
+  position: relative;
+}
+
+.sidebar {
+  text-align: center;
+}
+
+.icon {
+  display: block;
+  font-size: 21px;
+  vertical-align: baseline;
+}
+
+.text {
+  display: block;
+  font-size: 10px;
+  line-height: 14px;
+  padding-top: 6px;
+}
+
+.item {
+  border-bottom: 1px solid gray;
+  display: block;
+  margin: 0 10px;
+  padding: 36px 0 21px;
+  text-decoration: none;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.link {
+  color: gray;
+  padding: 0;
+
+  &.isActive,
+  &:hover {
+    background-color: transparent;
+    color: green;
+
+    .text {
+      color: white;
+    }
+  }
+}
+
+.hide {
+  display: none;
+}
+
+.progressBarContainer {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}

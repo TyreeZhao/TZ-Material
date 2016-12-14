@@ -3,10 +3,10 @@ var cooking = require('cooking');
 
 cooking.set({
   entry: {
-    app: ['babel-polyfill', './src/main.js']
+    app: ['babel-polyfill', './src/app.js']
   },
   dist: './dist',
-  template: './index.tpl',
+  template: './src/index.html',
 
   devServer: {
     port: 8080,
@@ -16,20 +16,30 @@ cooking.set({
   // production
   clean: true,
   hash: true,
-  sourceMap: true,
-  minimize: true,
-  chunk: true, // see https://cookingjs.github.io/zh-cn/configuration.html#chunk
-  postcss: [
-    // require('...')
-  ],
-  publicPath: '/dist/',
+  chunk: 'vendor',
+  publicPath: '/',
   assetsPath: 'static',
+  sourceMap: true,
+  extractCSS: true,
   urlLoaderLimit: 10000,
-  extractCSS: '[name].[contenthash:7].css',
-  alias: {
-    'src': path.join(__dirname, 'src')
-  },
-  extends: ['vue2', 'lint', 'autoprefixer']
+
+  extends: ['react', 'postcss'],
 });
+
+cooking.add('resolve.root', [
+  path.resolve('./src'),
+])
+
+const cssModulesLoader = [
+  'css?sourceMap&-minimize',
+  'modules',
+  'importLoaders=1',
+  'localIdentName=[name]__[local]___[hash:base64:5]',
+].join('&')
+
+cooking.add('loader.sass', {
+  test: /\.scss$/,
+  loader: `style!${cssModulesLoader}!postcss!sass`,
+})
 
 module.exports = cooking.resolve();

@@ -1,17 +1,19 @@
 # TZ-Material
-> A vue project.
+> set of React UI components
 
-## Development
+```
+# Contribution
 
-```shell
-npm i cooking-cli -g
-npm run dev
+### Development
+
+make dev
 ```
 
-## Production
+### Production
+
 ```
-npm run dist
+make dist
 ```
 
-## License
-ISC
+# License
+MIT

@@ -1,4 +1,32 @@
 {
-  "plugins": ["vue"],
-  "extends": ["elemefe"]
+  "parser"  : "babel-eslint",
+  "extends" : [ "airbnb" ],
+  "plugins" : [
+    "flow-vars",
+  ],
+  "env"     : {
+    "browser" : true
+  },
+  "globals" : {
+    "Action"       : false,
+    "__DEV__"      : false,
+    "__PROD__"     : false,
+    "__DEBUG__"    : false,
+    "__DEBUG_NEW_WINDOW__" : false,
+    "__BASENAME__" : false,
+    "window": true,
+  },
+  "rules": {
+    "semi" : [2, "never"],
+    "max-len": [2, 120, 2],
+    "flow-vars/define-flow-type": 1,
+    "flow-vars/use-flow-type": 1,
+    "prefer-stateless-function": [ 0, { "ignorePureComponent": true } ],
+    "no-underscore-dangle": ["error", { "allow": ["__INITIAL_STATE__"] }],
+    "import/no-unresolved": [ 2, { "ignore": [ '^(L|l)emon', 'store', '^actions', '^views', '^routes', '^layouts', '^redux', '^constants', '^containers' ]}],
+    "no-param-reassign": 0,
+    "prefer-const": 0,
+    "padded-blocks": 0,
+    "new-cap": 0
+  }
 }
